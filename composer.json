@@ -11,7 +11,7 @@
     "require": {
         "php": "^7.2.5|^8.1",
         "guzzlehttp/guzzle": "^7.5",
-        "netresearch/jsonmapper": "dev-master@dev",
+        "netresearch/jsonmapper": "^4.4",
         "caseyamcl/guzzle_retry_middleware": "^2.8"
     },
     "autoload": {
