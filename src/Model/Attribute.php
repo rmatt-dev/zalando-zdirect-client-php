@@ -4,7 +4,16 @@ namespace Baumeister\ZalandoClient\Model;
 
 class Attribute
 {
-    public string $label;
-    public Name $name;
-    public AttributeValue $value;
+    /**
+     * @var string
+     */
+    public $label;
+    /**
+     * @var Name
+     */
+    public $name;
+    /**
+     * @var AttributeValue
+     */
+    public $value;
 }

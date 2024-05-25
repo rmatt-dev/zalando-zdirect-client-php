@@ -4,8 +4,20 @@ namespace Baumeister\ZalandoClient\Model;
 
 class Order
 {
-    public string $id;
-    public string $type;
-    public OrderAttributes $attributes;
-    public OrderRelationships $relationships;
+    /**
+     * @var string
+     */
+    public $id;
+    /**
+     * @var string
+     */
+    public $type;
+    /**
+     * @var OrderAttributes
+     */
+    public $attributes;
+    /**
+     * @var OrderRelationships
+     */
+    public $relationships;
 }

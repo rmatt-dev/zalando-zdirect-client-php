@@ -4,9 +4,20 @@ namespace Baumeister\ZalandoClient\Model;
 
 class LocalizedValue
 {
-    public string $de;
-    public string $en;
-    public string $enGb;
-    public string $fr;
-
+    /**
+     * @var string
+     */
+    public $de;
+    /**
+     * @var string
+     */
+    public $en;
+    /**
+     * @var string
+     */
+    public $enGb;
+    /**
+     * @var string
+     */
+    public $fr;
 }

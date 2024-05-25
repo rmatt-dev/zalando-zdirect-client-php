@@ -2,8 +2,8 @@
 
 namespace Baumeister\ZalandoClient\Model;
 
-enum TypeCardinality: string
+class TypeCardinality
 {
-    case one = 'one';
-    case many = 'many';
+    const one = 'one';
+    const many = 'many';
 }

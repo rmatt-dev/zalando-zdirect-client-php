@@ -4,6 +4,12 @@ namespace Baumeister\ZalandoClient\Model;
 
 class TypeDefinitionItem
 {
-    public string $label;
-    public bool $optional;
+    /**
+     * @var string
+     */
+    public $label;
+    /**
+     * @var bool
+     */
+    public $optional;
 }

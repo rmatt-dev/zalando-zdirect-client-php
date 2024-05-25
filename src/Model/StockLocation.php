@@ -6,10 +6,28 @@ use DateTime;
 
 class StockLocation
 {
-    public string $id;
-    public string $name;
-    public string $type;
-    public Location $location;
-    public string $abbreviation;
-    public DateTime $valid_from;
+    /**
+     * @var string
+     */
+    public $id;
+    /**
+     * @var string
+     */
+    public $name;
+    /**
+     * @var string
+     */
+    public $type;
+    /**
+     * @var Location
+     */
+    public $location;
+    /**
+     * @var string
+     */
+    public $abbreviation;
+    /**
+     * @var DateTime
+     */
+    public $valid_from;
 }

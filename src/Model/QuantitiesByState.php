@@ -4,6 +4,12 @@ namespace Baumeister\ZalandoClient\Model;
 
 class QuantitiesByState
 {
-    public int $offerable;
-    public int $non_offerable;
+    /**
+     * @var int
+     */
+    public $offerable;
+    /**
+     * @var int
+     */
+    public $non_offerable;
 }

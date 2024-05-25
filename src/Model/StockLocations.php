@@ -5,5 +5,5 @@ namespace Baumeister\ZalandoClient\Model;
 class StockLocations
 {
     /** @var StockLocation[] */
-    public array $stock_locations;
+    public $stock_locations;
 }

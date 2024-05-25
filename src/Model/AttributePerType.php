@@ -4,7 +4,10 @@ namespace Baumeister\ZalandoClient\Model;
 
 class AttributePerType
 {
-    public AttributeType $type;
+    /**
+     * @var AttributeType
+     */
+    public $type;
     /** @var string[] */
-    public array $values;
+    public $values;
 }

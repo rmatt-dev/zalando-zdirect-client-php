@@ -13,19 +13,64 @@ class OrderAttributes
     const TYPE_ZALANDO = 'ZalandoFulfilled';
     const TYPE_PARTNER = 'PartnerFulfilled';
 
-    public string $order_id;
-    public string $order_number;
-    public string $customer_number;
-    public string $customer_email;
-    public string $order_type;
-    public string $status;
-    public bool $exported;
-    public Address $shipping_address;
-    public Address $billing_address;
-    public int $order_lines_count;
-    public float $order_lines_price_amount;
-    public string $order_lines_price_currency;
-    public Money $shipping_costs;
-    public DateTime $order_date;
-    public DateTime $created_at;
+    /**
+     * @var string
+     */
+    public $order_id;
+    /**
+     * @var string
+     */
+    public $order_number;
+    /**
+     * @var string
+     */
+    public $customer_number;
+    /**
+     * @var string
+     */
+    public $customer_email;
+    /**
+     * @var string
+     */
+    public $order_type;
+    /**
+     * @var string
+     */
+    public $status;
+    /**
+     * @var bool
+     */
+    public $exported;
+    /**
+     * @var Address
+     */
+    public $shipping_address;
+    /**
+     * @var Address
+     */
+    public $billing_address;
+    /**
+     * @var int
+     */
+    public $order_lines_count;
+    /**
+     * @var float
+     */
+    public $order_lines_price_amount;
+    /**
+     * @var string
+     */
+    public $order_lines_price_currency;
+    /**
+     * @var Money
+     */
+    public $shipping_costs;
+    /**
+     * @var DateTime
+     */
+    public $order_date;
+    /**
+     * @var DateTime
+     */
+    public $created_at;
 }

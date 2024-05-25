@@ -4,6 +4,12 @@ namespace Baumeister\ZalandoClient\Model;
 
 class Description
 {
-    public string $de;
-    public string $en;
+    /**
+     * @var string
+     */
+    public $de;
+    /**
+     * @var string
+     */
+    public $en;
 }

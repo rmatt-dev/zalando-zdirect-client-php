@@ -4,11 +4,32 @@ namespace Baumeister\ZalandoClient\Model;
 
 class Location
 {
-    public string $name;
-    public string $postal_code;
-    public string $country_code;
-    public string $street;
-    public string $city;
-    public float $latitude;
-    public float $longitude;
+    /**
+     * @var string
+     */
+    public $name;
+    /**
+     * @var string
+     */
+    public $postal_code;
+    /**
+     * @var string
+     */
+    public $country_code;
+    /**
+     * @var string
+     */
+    public $street;
+    /**
+     * @var string
+     */
+    public $city;
+    /**
+     * @var float
+     */
+    public $latitude;
+    /**
+     * @var float
+     */
+    public $longitude;
 }

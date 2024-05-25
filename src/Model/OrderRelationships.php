@@ -4,5 +4,8 @@ namespace Baumeister\ZalandoClient\Model;
 
 class OrderRelationships
 {
-    public Relationships $order_items;
+    /**
+     * @var Relationships
+     */
+    public $order_items;
 }

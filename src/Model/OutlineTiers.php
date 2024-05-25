@@ -4,7 +4,16 @@ namespace Baumeister\ZalandoClient\Model;
 
 class OutlineTiers
 {
-    public OutlineTier $model;
-    public OutlineTier $config;
-    public OutlineTier $simple;
+    /**
+     * @var OutlineTier
+     */
+    public $model;
+    /**
+     * @var OutlineTier
+     */
+    public $config;
+    /**
+     * @var OutlineTier
+     */
+    public $simple;
 }

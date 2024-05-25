@@ -6,10 +6,28 @@ use DateTime;
 
 class AttributeValue
 {
-    public ?bool $boolean = null;
-    public ?DateTime $datetime = null;
-    public ?float $decimal = null;
-    public ?int $integer = null;
-    public ?string $string = null;
-    public ?LocalizedValue $localized = null;
+    /**
+     * @var bool|null
+     */
+    public $boolean = null;
+    /**
+     * @var DateTime|null
+     */
+    public $datetime = null;
+    /**
+     * @var float|null
+     */
+    public $decimal = null;
+    /**
+     * @var int|null
+     */
+    public $integer = null;
+    /**
+     * @var string|null
+     */
+    public $string = null;
+    /**
+     * @var LocalizedValue|null
+     */
+    public $localized = null;
 }

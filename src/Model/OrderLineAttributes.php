@@ -10,8 +10,20 @@ class OrderLineAttributes
     const STATUS_RETURNED = 'returned';
     const STATUS_CANCELED = 'canceled';
 
-    public string $order_line_id;
-    public string $order_item_id;
-    public string $status;
-    public Money $price;
+    /**
+     * @var string
+     */
+    public $order_line_id;
+    /**
+     * @var string
+     */
+    public $order_item_id;
+    /**
+     * @var string
+     */
+    public $status;
+    /**
+     * @var Money
+     */
+    public $price;
 }

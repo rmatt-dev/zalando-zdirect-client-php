@@ -4,7 +4,10 @@ namespace Baumeister\ZalandoClient\Model;
 
 class TypeDefinition
 {
-    public TypeDefinitionValue $type;
+    /**
+     * @var string
+     */
+    public $type;
     /** @var TypeDefinitionItem[] */
-    public array $types;
+    public $types;
 }

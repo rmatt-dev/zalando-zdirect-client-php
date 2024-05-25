@@ -4,7 +4,16 @@ namespace Baumeister\ZalandoClient\Model;
 
 class ProductPrice
 {
-    public string $ean;
-    public string $sales_channel_id;
-    public RegularPrice $regular_price;
+    /**
+     * @var string
+     */
+    public $ean;
+    /**
+     * @var string
+     */
+    public $sales_channel_id;
+    /**
+     * @var RegularPrice
+     */
+    public $regular_price;
 }

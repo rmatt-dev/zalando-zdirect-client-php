@@ -2,13 +2,13 @@
 
 namespace Baumeister\ZalandoClient\Model;
 
-enum TypeDefinitionValue: string
+class TypeDefinitionValue
 {
-    case BooleanDefinition = 'BooleanDefinition';
-    case StringDefinition = 'StringDefinition';
-    case LocalizedStringDefinition = 'LocalizedStringDefinition';
-    case IntegerDefinition = 'IntegerDefinition';
-    case DecimalDefinition = 'DecimalDefinition';
-    case DatetimeDefinition = 'DatetimeDefinition';
-    case StructuredDefinition = 'StructuredDefinition';
+    const BooleanDefinition = 'BooleanDefinition';
+    const StringDefinition = 'StringDefinition';
+    const LocalizedStringDefinition = 'LocalizedStringDefinition';
+    const IntegerDefinition = 'IntegerDefinition';
+    const DecimalDefinition = 'DecimalDefinition';
+    const DatetimeDefinition = 'DatetimeDefinition';
+    const StructuredDefinition = 'StructuredDefinition';
 }

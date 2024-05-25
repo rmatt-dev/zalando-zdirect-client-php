@@ -4,7 +4,16 @@ namespace Baumeister\ZalandoClient\Model;
 
 class ResourceObject
 {
-    public string $id;
-    public string $type;
+    /**
+     * @var string
+     */
+    public $id;
+    /**
+     * @var string
+     */
+    public $type;
+    /**
+     * @var
+     */
     public $attributes;
 }

@@ -5,8 +5,11 @@ namespace Baumeister\ZalandoClient\Model;
 class OrderLinesTopLevel
 {
     /** @var OrderLine[] */
-    public array $data;
-    public Meta $meta;
+    public $data;
+    /**
+     * @var Meta
+     */
+    public $meta;
     /** @var ResourceObject[] */
-    public array $included;
+    public $included;
 }

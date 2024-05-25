@@ -26,13 +26,41 @@ use JsonMapper_Exception;
 
 class ZalandoClient
 {
-    private Client $guzzleClient;
-    private string $accessToken = '';
-    private string $clientId;
-    private string $clientSecret;
-    private JsonMapper $jsonMapper;
-    private string $merchantId;
+    const API_URL_PROD = 'https://api.merchants.zalando.com';
+    const API_URL_SANDBOX = 'https://api-sandbox.merchants.zalando.com';
 
+    /**
+     * @var Client
+     */
+    private $guzzleClient;
+    /**
+     * @var string
+     */
+    private $accessToken = '';
+    /**
+     * @var string
+     */
+    private $clientId;
+    /**
+     * @var string
+     */
+    private $clientSecret;
+    /**
+     * @var JsonMapper
+     */
+    private $jsonMapper;
+    /**
+     * @var string
+     */
+    private $merchantId;
+
+    /**
+     * @param string $clientId
+     * @param string $clientSecret
+     * @param string $merchantId
+     * @param bool $useSandbox
+     * @param $handlerStack
+     */
     public function __construct(
         string $clientId,
         string $clientSecret,
@@ -48,10 +76,10 @@ class ZalandoClient
             'OrderItem' => OrderItem::class,
             'OrderLine' => OrderLine::class,
         ];
-        $this->jsonMapper->classMap[ResourceObject::class] = function ($class, $object) use ($typeToClassMap) {
+        $this->jsonMapper->classMap[ResourceObject::class] = static function ($class, $object) use ($typeToClassMap) {
             return $typeToClassMap[$object->type];
         };
-        $url = $useSandbox ? 'https://api-sandbox.merchants.zalando.com' : 'https://api.merchants.zalando.com';
+        $url = $useSandbox ? self::API_URL_SANDBOX : self::API_URL_PROD;
         $stack = $handlerStack ?: HandlerStack::create();
         $stack->push(
             GuzzleRetryMiddleware::factory([
@@ -75,7 +103,7 @@ class ZalandoClient
                 'grant_type' => 'client_credentials'
             ]
         ]);
-        $data = json_decode($response->getBody()->getContents());
+        $data = \json_decode($response->getBody()->getContents());
         $this->accessToken = $data->access_token;
     }
 
@@ -102,7 +130,7 @@ class ZalandoClient
                 'page[number]' => $pageNumber
             ]
         ]);
-        $data = json_decode($response->getBody()->getContents());
+        $data = \json_decode($response->getBody()->getContents());
         return $this->jsonMapper->map($data, new OrdersTopLevel());
     }
 
@@ -117,7 +145,7 @@ class ZalandoClient
                 'Authorization' => "Bearer $this->accessToken",
             ]
         ]);
-        $data = json_decode($response->getBody()->getContents());
+        $data = \json_decode($response->getBody()->getContents());
         return $this->jsonMapper->map($data, new LookUp());
     }
 
@@ -127,7 +155,7 @@ class ZalandoClient
     public function putProductIdentifier(string $ean, string $productSku): bool
     {
         // TODO: replace with real object
-        $body = json_encode(['merchant_product_simple_id' => $productSku], JSON_FORCE_OBJECT);
+        $body = \json_encode(['merchant_product_simple_id' => $productSku], JSON_FORCE_OBJECT);
         $response = $this->guzzleClient->put("/merchants/$this->merchantId/products/identifiers/$ean", [
             'headers' => [
                 'Authorization' => "Bearer $this->accessToken",
@@ -146,7 +174,7 @@ class ZalandoClient
      */
     public function postProductSubmission(ProductSubmission $productSubmission): bool
     {
-        $body = json_encode($productSubmission);
+        $body = \json_encode($productSubmission);
         $response = $this->guzzleClient->post("/merchants/$this->merchantId/product-submissions", [
             'headers' => [
                 'Authorization' => "Bearer $this->accessToken",
@@ -174,7 +202,7 @@ class ZalandoClient
                 'include' => ''
             ])
         ]);
-        $data = json_decode($response->getBody()->getContents());
+        $data = \json_decode($response->getBody()->getContents());
         return $this->jsonMapper->map($data, new OrderLinesTopLevel());
     }
 
@@ -189,7 +217,7 @@ class ZalandoClient
                 'Accept' => 'application/vnd.api+json'
             ],
         ]);
-        $data = json_decode($response->getBody()->getContents());
+        $data = \json_decode($response->getBody()->getContents());
         return $this->jsonMapper->map($data, new OutlinesPagedResponse());
     }
 
@@ -204,7 +232,7 @@ class ZalandoClient
                 'Accept' => 'application/vnd.api+json'
             ],
         ]);
-        $data = json_decode($response->getBody()->getContents());
+        $data = \json_decode($response->getBody()->getContents());
         return $this->jsonMapper->map($data, new ItemQuantitiesSnapshot());
     }
 
@@ -219,7 +247,7 @@ class ZalandoClient
                 'Accept' => 'application/vnd.api+json'
             ],
         ]);
-        $data = json_decode($response->getBody()->getContents());
+        $data = \json_decode($response->getBody()->getContents());
         return $this->jsonMapper->map($data, new StockLocations());
     }
 
@@ -234,7 +262,7 @@ class ZalandoClient
                 'Accept' => 'application/vnd.api+json'
             ],
         ]);
-        $data = json_decode($response->getBody()->getContents());
+        $data = \json_decode($response->getBody()->getContents());
         return $this->jsonMapper->map($data, new TypeResponse());
     }
 
@@ -249,7 +277,7 @@ class ZalandoClient
                 'Accept' => 'application/vnd.api+json'
             ],
         ]);
-        $data = json_decode($response->getBody()->getContents());
+        $data = \json_decode($response->getBody()->getContents());
         return $this->jsonMapper->map($data, new AttributesPagedResponse());
     }
 
@@ -258,7 +286,7 @@ class ZalandoClient
      */
     public function patchOrderSetExported(string $orderId, string $merchantOrderId): bool
     {
-        $body = json_encode([
+        $body = \json_encode([
             'data' => [
                 'id' => $orderId,
                 'type' => 'Order',
@@ -275,7 +303,7 @@ class ZalandoClient
      */
     public function patchOrderLineSetStatus(string $orderId, string $orderItemId, string $orderLineId, string $status): bool
     {
-        $body = json_encode([
+        $body = \json_encode([
             'data' => [
                 'id' => $orderLineId,
                 'type' => 'OrderLine',
@@ -302,7 +330,7 @@ class ZalandoClient
      */
     public function patchOrderSetTrackingNumbers(string $orderId, string $trackingNumber, ?string $returnTrackingNumber = null): bool
     {
-        $body = json_encode([
+        $body = \json_encode([
             'data' => [
                 'id' => $orderId,
                 'type' => 'Order',
@@ -323,7 +351,7 @@ class ZalandoClient
     {
         $stockUpdatesRequest = new StockUpdatesRequest();
         $stockUpdatesRequest->items = $stocks;
-        $body = json_encode($stockUpdatesRequest);
+        $body = \json_encode($stockUpdatesRequest);
         $response = $this->guzzleClient->post("/merchants/$this->merchantId/stocks", [
             'headers' => [
                 'Authorization' => "Bearer $this->accessToken",
@@ -332,7 +360,7 @@ class ZalandoClient
             'body' => $body
         ]);
         if ($response->getStatusCode() == 207) {
-            return json_decode($response->getBody()->getContents());
+            return \json_decode($response->getBody()->getContents());
         }
         return false;
     }
@@ -344,7 +372,7 @@ class ZalandoClient
     public function postPrices(array $prices): mixed
     {
         // TODO: replace with real object
-        $body = json_encode(['product_prices' => $prices], JSON_FORCE_OBJECT);
+        $body = \json_encode(['product_prices' => $prices], JSON_FORCE_OBJECT);
         $response = $this->guzzleClient->post("/merchants/$this->merchantId/stocks", [
             'headers' => [
                 'Authorization' => "Bearer $this->accessToken",
@@ -353,7 +381,7 @@ class ZalandoClient
             'body' => $body
         ]);
         if ($response->getStatusCode() == 207) {
-            return json_decode($response->getBody()->getContents());
+            return \json_decode($response->getBody()->getContents());
         }
         return false;
     }

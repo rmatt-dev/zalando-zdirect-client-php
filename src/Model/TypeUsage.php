@@ -2,9 +2,9 @@
 
 namespace Baumeister\ZalandoClient\Model;
 
-enum TypeUsage: string
+class TypeUsage
 {
-    case literal = 'literal';
-    case reference_by_label = 'reference_by_label';
-    case reference_by_value = 'reference_by_value';
+    const literal = 'literal';
+    const reference_by_label = 'reference_by_label';
+    const reference_by_value = 'reference_by_value';
 }

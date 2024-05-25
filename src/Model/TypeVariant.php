@@ -4,6 +4,12 @@ namespace Baumeister\ZalandoClient\Model;
 
 class TypeVariant
 {
-    public string $label;
-    public Name $name;
+    /**
+     * @var string
+     */
+    public $label;
+    /**
+     * @var Name
+     */
+    public $name;
 }

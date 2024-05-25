@@ -4,6 +4,12 @@ namespace Baumeister\ZalandoClient\Model;
 
 class AttributeType
 {
-    public string $label;
-    public string $version;
+    /**
+     * @var string
+     */
+    public $label;
+    /**
+     * @var string
+     */
+    public $version;
 }

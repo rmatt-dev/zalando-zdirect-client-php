@@ -4,8 +4,20 @@ namespace Baumeister\ZalandoClient\Model;
 
 class Outline
 {
-    public string $label;
-    public Name $name;
-    public Description $description;
-    public OutlineTiers $tiers;
+    /**
+     * @var string
+     */
+    public $label;
+    /**
+     * @var Name
+     */
+    public $name;
+    /**
+     * @var Description
+     */
+    public $description;
+    /**
+     * @var OutlineTiers
+     */
+    public $tiers;
 }
